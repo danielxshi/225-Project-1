@@ -16,6 +16,12 @@
 Patient::Patient()
 {
     
+    name = "To be entered";
+    address = "To be entered";
+    phone = "To be entered";
+    email = "To be entered";
+    careCard = "0000000000";
+    
 };
 
 // Parameterized Constructor
@@ -24,7 +30,11 @@ Patient::Patient()
 //                All other data members set to "To be entered".
 Patient::Patient(string aCareCard)
 {
-    
+    name = "To be entered";
+    address = "To be entered";
+    phone = "To be entered";
+    email = "To be entered";
+    careCard = aCareCard;
 };
 
 // Getters and setters
@@ -95,20 +105,27 @@ void Patient::setEmail(const string anEmail)
 //              Returns true if both Patient objects have the same care card number.
 bool Patient::operator==(const Patient & rhs)
 {
-    //if current "this" patient object is the same as the passed patient object (rhs)
-    // return true
-    if () {
+    //not sure if this is right
+    if (this -> careCard == rhs.careCard) {
         return true;
-    }else
+    } else
     return false;
-    
 };
 
 // Description: Greater than operator. Compares "this" Patient object with "rhs" Patient object.
 //              Returns true if the care card number of "this" Patient object is > the care card number of "rhs" Patient object.
-bool Patient::operator>(const Patient & rhs){
-    
+bool Patient::operator>(const Patient & rhs)
+{
+    //not sure if this is right
+    if (this -> careCard > rhs.careCard) {
+        return true;
+    } else
+        return false;
 };
 
 // Description: Prints the content of "this" patient.
-void printPatient( );
+void Patient::printPatient( )
+{
+    //cout << "Name: " << name;
+    
+};
