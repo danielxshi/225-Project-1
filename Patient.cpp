@@ -7,7 +7,10 @@
 //
 
 #include "Patient.h"
+#include <iostream>
 
+
+const string TBE = "To be entered";
 
 // Default Constructor
 // Description: Create a patient with a care card number of "0000000000".
@@ -16,10 +19,10 @@
 Patient::Patient()
 {
     
-    name = "To be entered";
-    address = "To be entered";
-    phone = "To be entered";
-    email = "To be entered";
+    this -> name = TBE;
+    this -> address = TBE;
+    this -> phone = TBE;
+    this -> email = TBE;
     careCard = "0000000000";
     
 };
@@ -30,49 +33,49 @@ Patient::Patient()
 //                All other data members set to "To be entered".
 Patient::Patient(string aCareCard)
 {
-    name = "To be entered";
-    address = "To be entered";
-    phone = "To be entered";
-    email = "To be entered";
-    careCard = aCareCard;
+    this -> name = TBE;
+    this -> address = TBE;
+    this -> phone = TBE;
+    this -> email = TBE;
+    this -> careCard = aCareCard;
 };
 
 // Getters and setters
 // Description: Returns patient's name.
 string Patient::getName() const
 {
-    return name;
+    return (this -> name);
 };
 
 // Description: Returns patient's address.
 string Patient::getAddress() const
 {
-    return address;
+    return (this -> address);
 };
 
 // Description: Returns patient's phone number.
 string Patient::getPhone() const
 {
-    return phone;
+    return (this -> phone);
 };
 
 // Description: Returns patient's email.
 string Patient::getEmail() const
 {
-    return email;
+    return (this -> email);
 };
 
 // Description: Returns patient's care card number.
 string Patient::getCareCard() const
 {
-    return careCard;
+    return (this -> careCard);
 };
 
 // Description: Sets the patient's name.
 void Patient::setName(const string aName)
 {
     if (name != aName){
-        name = aName;
+        this -> name = aName;
     }
 };
 
@@ -80,7 +83,7 @@ void Patient::setName(const string aName)
 void Patient::setAddress(const string anAddress)
 {
     if (address != anAddress) {
-        address = anAddress;
+        this -> address = anAddress;
     }
 };
 
@@ -88,7 +91,7 @@ void Patient::setAddress(const string anAddress)
 void Patient::setPhone(const string aPhone)
 {
     if (phone != aPhone) {
-        phone = aPhone;
+        this -> phone = aPhone;
     }
 };
 
@@ -96,7 +99,7 @@ void Patient::setPhone(const string aPhone)
 void Patient::setEmail(const string anEmail)
 {
     if (email != anEmail){
-        email = anEmail;
+        this -> email = anEmail;
     }
 };
 
@@ -126,6 +129,9 @@ bool Patient::operator>(const Patient & rhs)
 // Description: Prints the content of "this" patient.
 void Patient::printPatient( )
 {
-    //cout << "Name: " << name;
+    std::cout << "Name: " << this -> name << std::endl;
+    std::cout << "Address: " << this -> address << std::endl;
+    std::cout << "Phone: " << this -> phone << std::endl;
+    std::cout << "Email: " << this -> email << std::endl;
     
 };
