@@ -28,6 +28,7 @@ int List::getElementCount() const
     return elementCount;
 };
 
+//NOT DONE
 // Description: Insert an element.
 // Precondition: newElement must not already be in data collection.
 // Postcondition: newElement inserted and elementCount has been incremented.
@@ -39,7 +40,7 @@ bool List::insert(const Patient& newElement)
         return false;
     }
     
-    
+    // go through each element
     for (int x = 0; x <= this -> capacity; x++) {
         // check if newElement is already in collection
         if (newElement.getCareCard() == this -> elements[x].getCareCard()) {
@@ -53,21 +54,10 @@ bool List::insert(const Patient& newElement)
         }
     }
     
-
-    
-    // go through each element
-//    for (int x = 0; x <= MAX_ELEMENTS; x++) {
-//        
-//        if (this->newElement != elements[x]) {
-//            
-//            elementCount++;
-//            capacity++;
-//        }
-//
-//    }
     return true;
 };
 
+//NOT DONE
 // Description: Remove an element.
 // Postcondition: toBeRemoved is removed and elementCount has been decremented.
 bool List::remove( const Patient& toBeRemoved )

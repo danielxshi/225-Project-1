@@ -7,10 +7,12 @@
 //
 
 #include "Patient.h"
+#include <locale>
 #include <iostream>
 
 
 const string TBE = "To be entered";
+
 
 // Default Constructor
 // Description: Create a patient with a care card number of "0000000000".
@@ -18,13 +20,11 @@ const string TBE = "To be entered";
 //                except the care card number which is set to "0000000000".
 Patient::Patient()
 {
-    
-    this -> name = TBE;
-    this -> address = TBE;
-    this -> phone = TBE;
-    this -> email = TBE;
+    name = TBE;
+    address = TBE;
+    phone = TBE;
+    email = TBE;
     careCard = "0000000000";
-    
 };
 
 // Parameterized Constructor
@@ -33,73 +33,78 @@ Patient::Patient()
 //                All other data members set to "To be entered".
 Patient::Patient(string aCareCard)
 {
-    this -> name = TBE;
-    this -> address = TBE;
-    this -> phone = TBE;
-    this -> email = TBE;
-    this -> careCard = aCareCard;
+    name = TBE;
+    address = TBE;
+    phone = TBE;
+    email = TBE;
+    careCard = aCareCard;
+
 };
 
 // Getters and setters
 // Description: Returns patient's name.
 string Patient::getName() const
 {
-    return (this -> name);
+    return name;
 };
 
 // Description: Returns patient's address.
 string Patient::getAddress() const
 {
-    return (this -> address);
+    return address;
 };
 
 // Description: Returns patient's phone number.
 string Patient::getPhone() const
 {
-    return (this -> phone);
+    return phone;
 };
 
 // Description: Returns patient's email.
 string Patient::getEmail() const
 {
-    return (this -> email);
+    return email;
 };
 
 // Description: Returns patient's care card number.
 string Patient::getCareCard() const
 {
-    return (this -> careCard);
+    return careCard;
 };
 
 // Description: Sets the patient's name.
 void Patient::setName(const string aName)
 {
-    if (name != aName){
-        this -> name = aName;
+    locale loc;
+    if (!aName.empty() && isalpha(aName[0], loc)){
+        name = aName;
     }
 };
 
 // Description: Sets the patient's address.
 void Patient::setAddress(const string anAddress)
 {
-    if (address != anAddress) {
-        this -> address = anAddress;
+    locale loc;
+    if (!anAddress.empty() && isalpha(anAddress[0], loc)){
+        address = anAddress;
     }
 };
 
 // Description: Sets the patient's phone number.
 void Patient::setPhone(const string aPhone)
 {
-    if (phone != aPhone) {
-        this -> phone = aPhone;
+    locale loc;
+    if (!aPhone.empty() && isdigit(aPhone[0], loc)){
+        phone = aPhone;
     }
 };
 
 // Description: Sets the patient's email.
 void Patient::setEmail(const string anEmail)
 {
-    if (email != anEmail){
-        this -> email = anEmail;
+    locale loc;
+    if (!anEmail.empty()){
+        email = anEmail;
     }
 };
 
@@ -108,8 +113,7 @@ void Patient::setEmail(const string anEmail)
 //              Returns true if both Patient objects have the same care card number.
 bool Patient::operator==(const Patient & rhs)
 {
-    //not sure if this is right
-    if (this -> careCard == rhs.careCard) {
+    if (careCard == rhs.careCard) {
         return true;
     } else
     return false;
@@ -119,8 +123,7 @@ bool Patient::operator==(const Patient & rhs)
 //              Returns true if the care card number of "this" Patient object is > the care card number of "rhs" Patient object.
 bool Patient::operator>(const Patient & rhs)
 {
-    //not sure if this is right
-    if (this -> careCard > rhs.careCard) {
+    if (careCard > rhs.careCard) {
         return true;
     } else
         return false;
@@ -129,9 +132,9 @@ bool Patient::operator>(const Patient & rhs)
 // Description: Prints the content of "this" patient.
 void Patient::printPatient( )
 {
-    std::cout << "Name: " << this -> name << std::endl;
-    std::cout << "Address: " << this -> address << std::endl;
-    std::cout << "Phone: " << this -> phone << std::endl;
-    std::cout << "Email: " << this -> email << std::endl;
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Address: " << address << std::endl;
+    std::cout << "Phone: " << phone << std::endl;
+    std::cout << "Email: " << email << std::endl;
     
 };
