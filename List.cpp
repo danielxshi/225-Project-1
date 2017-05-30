@@ -55,6 +55,7 @@ int List::getElementCount() const
 // Postcondition: newElement inserted and elementCount has been incremented.
 bool List::insert(const Patient& newElement)
 {
+
     // Check if there is room in the list by comparing the amount of elements currently 
     // in store to the capacity of the list
     if (this -> elementCount >= this -> capacity) {
@@ -71,13 +72,21 @@ bool List::insert(const Patient& newElement)
         }
         
         // if newElement carecard is smaller than current in array, insert into database
-        if (newElement.getCareCard() < this -> elements[x].getCareCard()) {
-            this.elements[x];
+        bool ableToInsert = (newElement >= 1) && (newElement <= itemCount + 1) {
+            if (ableToInsert) {
+                for (int pos = elementCount; pos >= newElement; pos--)
+                    items[pos + 1] = items[pos];
+
+                //insert new entry
+                elements[newElement] = newEntry;
+                elementCount++;
+            }
+            return ableToInsert;
         }
     }
-    
     return true;
 };
+
 
 //NOT DONE
 // Description: Remove an element.
@@ -94,7 +103,7 @@ bool List::remove( const Patient& toBeRemoved )
             elements[x] = elements[x + 1];
             delete elements[x];
             elements[x] = nullptr;
-            itemCount--; // Decrease count of entries
+            elementCount--; // Decrease count of entries
     } // end if
     return ableToRemove;
 };
