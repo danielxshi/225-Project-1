@@ -102,22 +102,22 @@ bool List::insert(const Patient& newElement)
 //NOT DONE
 // Description: Remove an element.
 // Postcondition: toBeRemoved is removed and elementCount has been decremented.
-bool List::remove( const Patient& toBeRemoved )
-{
-    bool ableToRemove = (position >= 1) && (position <=elementCount);
-    if (ableToRemove)
-    {
-        // Remove entry by shifting all entries after the one at 
-        // position toward the beginning fo the array
-        // (no shift if position == elementCount)
-        for (int x = position; x < elementCount; x++)
-            elements[x] = elements[x + 1];
-            delete elements[x];
-            elements[x] = nullptr;
-            elementCount--; // Decrease count of entries
-    } // end if
-    return ableToRemove;
-};
+bool List::remove(const Patient& toBeRemoved) {
+    for(int i = 0; i < elementCount; ++i){
+        if(elements[i] == toBeRemoved){ //If target element exists in the list
+            
+            for(int j = i; j < elementCount; ++j){ 
+                elements[j] = elements[j + 1];
+            }
+
+            elementCount--;
+            return true;
+        }
+    }
+
+    //If the element was not contained in target list:
+    return false;
+}
 
 // Description: Remove all elements.
 void List::removeAll()
