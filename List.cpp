@@ -49,7 +49,6 @@ int List::getElementCount() const
 // }
 
 
-//NOT DONE
 // Description: Insert an element.
 // Precondition: newElement must not already be in data collection.
 // Postcondition: newElement inserted and elementCount has been incremented.
@@ -81,36 +80,36 @@ bool List::insert(const Patient& newElement)
             elements[elementCount] = newElement;
             elementCount++;
 
-        for (int i = 0; i < elementCount; ++i)
-        {
-            //if it is the last element then no shift
-            if (newElement.getCardCard > elements[x].getCareCard) {
-                elements[x] = newElement; 
-            }
-            else {
-                for (int i = elementCount; i >= elements[x]; i--)
-                {
-                    elements[x + 1] = newElement;
+            for (int y = 0; i < elementCount; ++y)
+            {
+                //if it is the last element then no shift
+                if (newElement.getCardCard > elements[y].getCareCard) {
+                    elements[y + 1] = newElement; 
                 }
+                else {
+                    for (int z = elementCount; z >= elements[z]; z--)
+                    {
+                        elements[z + 1] = newElement;
+                    }
+                }
+                elementCount++;
             }
-            elementCount++;
-        }
-        return true;
-};
+            return true;
+       }
+}; 
 
 
-//NOT DONE
 // Description: Remove an element.
 // Postcondition: toBeRemoved is removed and elementCount has been decremented.
 bool List::remove(const Patient& toBeRemoved) {
-    for(int i = 0; i < elementCount; ++i) {
-        if(elements[i] == toBeRemoved) { //If target element exists in the list
+    for(int x = 0; x < elementCount; ++x) {
+        if(elements[x] == toBeRemoved) { //If target element exists in the list
             
-            for(int j = i;  j< elementCount; ++j) { 
-                elements[j] = elements[j + 1];
+            for(int y = x;  y < elementCount; ++y) { 
+                elements[y] = elements[y + 1];
             }
-            delete elements[i];
-            elements[i] = nullptr;
+            delete elements[x];
+            elements[x] = nullptr;
             elementCount--;
             return true;
         }
@@ -146,3 +145,4 @@ void List::printList( )
         this -> elements[x].printPatient();
     }
 };
+
