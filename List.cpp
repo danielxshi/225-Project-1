@@ -72,19 +72,30 @@ bool List::insert(const Patient& newElement)
         }
         
         // if newElement carecard is smaller than current in array, insert into database
-        bool ableToInsert = (newElement >= 1) && (newElement <= itemCount + 1) {
-            if (ableToInsert) {
-                for (int pos = elementCount; pos >= newElement; pos--)
-                    items[pos + 1] = items[pos];
+        if (newElement.getCareCard() < this -> elements[x].getCareCard()) {
+            // compare newEntry with elements from the list
+            // newEntry is larger than the element then keep moving down the list
+            // if it isn't then place the element down 
+            // newlyShiftedEntries = this.elements[x + 1];
 
-                //insert new entry
-                elements[newElement] = newEntry;
-                elementCount++;
+            elements[elementCount] = newElement;
+            elementCount++;
+
+        for (int i = 0; i < elementCount; ++i)
+        {
+            //if it is the last element then no shift
+            if (newElement.getCardCard > elements[x].getCareCard) {
+                elements[x] = newElement; 
             }
-            return ableToInsert;
+            else {
+                for (int i = elementCount; i >= elements[x]; i--)
+                {
+                    elements[x + 1] = newElement;
+                }
+            }
+            elementCount++;
         }
-    }
-    return true;
+        return true;
 };
 
 
@@ -129,15 +140,9 @@ Patient* List::search(const Patient& target)
 };
 
 // Description: Prints all elements stored in List.
-void List::printList()
+void List::printList( )
 {
     for (int x = 0; x < this -> capacity; x++){
         this -> elements[x].printPatient();
-
     }
-<<<<<<< HEAD
 };
-=======
-    
-};
->>>>>>> origin/master
