@@ -15,6 +15,10 @@ Patient elements[MAX_ELEMENTS];    // Data structure with capacity of MAX_ELEMEN
 int elementCount;                  // Current element count in element array
 int capacity;
 
+//isEmpty
+
+isEmpty();
+
 // Default constructor
 List::List()
 {
@@ -23,10 +27,27 @@ List::List()
 };
 
 // Description: Returns the total element count currently stored in List.
+// pg 152 displayBag(bagPtr);
 int List::getElementCount() const
-{
-    return elementCount;
+{  
+    return elementCount; 
 };
+
+// Alternative soln to getElementCount
+// int List::getElementCount() const
+// {  
+//     std::cout << "The list contains " << elementCount->getElementCount()
+//               << " items:" << std::endl;
+//     std::vector<std::string> elementCount = elementCount->List.elementCount;
+//     int elementCount = elements.size(); 
+// };
+
+// getLength() {
+//     task: gets the number of entries in this list
+//     input: none
+//     output: the integer number of entries currently in the list
+// }
+
 
 //NOT DONE
 // Description: Insert an element.
@@ -34,7 +55,8 @@ int List::getElementCount() const
 // Postcondition: newElement inserted and elementCount has been incremented.
 bool List::insert(const Patient& newElement)
 {
-    // check if there is room
+    // Check if there is room in the list by comparing the amount of elements currently 
+    // in store to the capacity of the list
     if (this -> elementCount >= this -> capacity) {
         std::cout << "There is no room to insert." << std::endl;
         return false;
@@ -50,7 +72,7 @@ bool List::insert(const Patient& newElement)
         
         // if newElement carecard is smaller than current in array, insert into database
         if (newElement.getCareCard() < this -> elements[x].getCareCard()) {
-            //
+            this.elements[x];
         }
     }
     
@@ -62,18 +84,25 @@ bool List::insert(const Patient& newElement)
 // Postcondition: toBeRemoved is removed and elementCount has been decremented.
 bool List::remove( const Patient& toBeRemoved )
 {
-    return true;
-
+    bool ableToRemove = (position >= 1) && (position <=elementCount);
+    if (ableToRemove)
+    {
+        // Remove entry by shifting all entries after the one at 
+        // position toward the beginning fo the array
+        // (no shift if position == elementCount)
+        for (int x = position; x < elementCount; x++)
+            elements[x] = elements[x + 1];
+            delete elements[x];
+            elements[x] = nullptr;
+            itemCount--; // Decrease count of entries
+    } // end if
+    return ableToRemove;
 };
 
 // Description: Remove all elements.
 void List::removeAll()
 {
-    for (int x = 0; x < this -> capacity; x++){
-        // sets elements back to 0 (aka constructor)
-        this -> elements[x] = Patient();
-        this -> elementCount--;
-    }
+    elementCount = 0;
 };
 
 // Description: Search for target element.
