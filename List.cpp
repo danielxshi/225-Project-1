@@ -103,18 +103,18 @@ bool List::insert(const Patient& newElement)
 // Description: Remove an element.
 // Postcondition: toBeRemoved is removed and elementCount has been decremented.
 bool List::remove(const Patient& toBeRemoved) {
-    for(int i = 0; i < elementCount; ++i){
-        if(elements[i] == toBeRemoved){ //If target element exists in the list
+    for(int i = 0; i < elementCount; ++i) {
+        if(elements[i] == toBeRemoved) { //If target element exists in the list
             
-            for(int j = i; j < elementCount; ++j){ 
+            for(int j = i;  j< elementCount; ++j) { 
                 elements[j] = elements[j + 1];
             }
-
+            delete elements[i];
+            elements[i] = nullptr;
             elementCount--;
             return true;
         }
     }
-
     //If the element was not contained in target list:
     return false;
 }
