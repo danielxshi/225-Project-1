@@ -91,9 +91,11 @@ Patient* List::search(const Patient& target)
 };
 
 // Description: Prints all elements stored in List.
-void List::printList( )
+void List::printList()
 {
     for (int x = 0; x < this -> capacity; x++){
         this -> elements[x].printPatient();
+
     }
+    
 };
