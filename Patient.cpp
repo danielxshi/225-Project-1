@@ -7,7 +7,7 @@
 //
 
 #include "Patient.h"
-#include <locale>
+#include <cctype>
 #include <iostream>
 
 
@@ -75,17 +75,18 @@ string Patient::getCareCard() const
 // Description: Sets the patient's name.
 void Patient::setName(const string aName)
 {
-    locale loc;
-    if (!aName.empty() && isalpha(aName[0], loc)){
+    if (!aName.empty() && isalpha(aName[0])){
         name = aName;
+    }else{
+        std::cout << "Please enter a name using no digits. " << std::endl;
     }
 };
 
 // Description: Sets the patient's address.
 void Patient::setAddress(const string anAddress)
 {
-    locale loc;
-    if (!anAddress.empty() && isalpha(anAddress[0], loc)){
+
+    if (!anAddress.empty()){
         address = anAddress;
     }
 };
@@ -93,16 +94,16 @@ void Patient::setAddress(const string anAddress)
 // Description: Sets the patient's phone number.
 void Patient::setPhone(const string aPhone)
 {
-    locale loc;
-    if (!aPhone.empty() && isdigit(aPhone[0], loc)){
+    if (!aPhone.empty() && isdigit(aPhone[0])){
         phone = aPhone;
+    } else{
+        std::cout << "Please enter a phone number with only digits. " << std::endl;
     }
 };
 
 // Description: Sets the patient's email.
 void Patient::setEmail(const string anEmail)
 {
-    locale loc;
     if (!anEmail.empty()){
         email = anEmail;
     }
