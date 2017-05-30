@@ -34,11 +34,12 @@ void menu (){
     
 }
 
+// get card number from user
 string getCardNum(){
     const string ERROR = "CareCard number must be at least 10 numbers.";
     string ccNum = "0000000000";
     
-    std::cout << "CareCard number of patient to add: ";
+    std::cout << "CareCard number: ";
     cin >> ccNum;
     
     // verify size, if ccNum is empty, and if it is a digit
@@ -51,31 +52,63 @@ string getCardNum(){
 }
 
 // enter in patient information
-void getPatientInfo(List& registry){
+Patient getPatientInfo(){
     string name = "";
     string address = "";
     string phone = "";
     string email = "";
     
+    std::cout << "Please enter the carecard number of patient to add: " << std::endl;
     Patient newPatient(getCardNum());
-    cout << "Enter patient name: ";
-    cin >> name;
-    cout << "Enter patient address: ";
-    cin >> address;
-    cout << "Enter patient phone number: ";
-    cin >> phone;
-    cout << "Enter patient email: ";
-    cin >> email;
+    
+    std::cout << "Enter patient name: ";
+    std::cin >> name;
+    std::cout << "Enter patient address: ";
+    std::cin >> address;
+    std::cout << "Enter patient phone number: ";
+    std::cin >> phone;
+    std::cout << "Enter patient email: ";
+    std::cin >> email;
     
     newPatient.setName(name);
     newPatient.setAddress(address);
     newPatient.setPhone(phone);
     newPatient.setEmail(email);
+    
+    return newPatient;
 }
 
-//remove patient
-void removePatient(List& registry){
-    getCardNum();
+//remove patient NOT DONE
+bool removePatient(List& registry){
+    std::cout << "Please enter the carecard number of patient to remove: " << std::endl;
+    string card = getCardNum();
+    Patient patient(card);
+    
+    return registry.remove(patient);
+}
+
+//search patient NOT DONE
+void search (List& registry){
+    std::cout << "Please enter the carecard number of patient to search for: " << std::endl;
+    string card = getCardNum();
+    
+    Patient patient(card);
+    Patient* curPatient = registry.search(patient);
+    
+    //check if patient exists
+    if (curPatient == NULL) {
+        std::cout << "No Patients Found under that carecard number." << std::endl;
+    } else {
+        // print patient information
+        std::cout << "Patient found: " << std::endl;
+        patient = *curPatient;
+        patient.printPatient();
+    }
+    
+}
+
+// modify patient
+void modify (List& registry){
     
 }
 
@@ -92,19 +125,16 @@ int main() {
     if (input == 1) {
         getCardNum();
         // fix to actually input into list
-        //getPatientInfo();
+        getPatientInfo();
         
         
     //2 remove a patient from the system
     } else if (input == 2){
-        getCardNum();
+        
         
     //3 search for a patient
-        // search by carecard?
     } else if (input == 3){
-        string ccNum = "";
-        std::cout << "CareCard number of patient to remove: ";
-        cin >> ccNum;
+        //
         
     //4 modify a patient's record (for example, adding the patient's information or making a change of address, etc...).
     // search for patient first, then modify
@@ -112,9 +142,9 @@ int main() {
 
     
     //5 print all its patients by ascending order of care card numbers.
-        //sort? then print
     } else if (input == 5){
-
+        //print list as it should be sorted
+        
     } else if (input == 6){
         std::cout << "Quitting program..." << std::endl;
         return -1;
